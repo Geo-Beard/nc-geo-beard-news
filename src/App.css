@@ -2,3 +2,10 @@
   text-align: center;
 }
 
+.Home img {
+  width: 20%;
+}
+
+.articles-list {
+  list-style: none;
+}
