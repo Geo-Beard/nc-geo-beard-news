@@ -16,7 +16,7 @@ import defaultUser from "./images/default-user.png";
 
 function App() {
   const [user, setUser] = useState({
-    username: "DefaultUser",
+    username: "DefaultUsername",
     name: "User",
     avatar_url: defaultUser,
   });
