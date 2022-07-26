@@ -4,8 +4,19 @@ const newsApi = axios.create({
   baseURL: "https://geo-beard-news.herokuapp.com/api",
 });
 
-export const fetchAllArticles = () => {
+export const fetchAllArticles = (topic) => {
+  if (topic) {
+    return newsApi.get(`/articles?topic=${topic}`).then(({ data }) => {
+      return data.articles;
+    });
+  }
   return newsApi.get("/articles").then(({ data }) => {
     return data.articles;
+  });
+};
+
+export const fetchAllTopics = () => {
+  return newsApi.get("/topics").then(({ data }) => {
+    return data.topics;
   });
 };

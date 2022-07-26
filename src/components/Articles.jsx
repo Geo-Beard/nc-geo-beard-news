@@ -1,21 +1,24 @@
 import * as api from "../api";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function Articles() {
+  const { topic } = useParams();
+
   const [allArticles, setAllArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     api
-      .fetchAllArticles()
+      .fetchAllArticles(topic)
       .then((articles) => {
         setAllArticles(articles);
       })
       .then(() => {
         setIsLoading(false);
       });
-  }, [allArticles]);
+  }, [topic]);
 
   return isLoading ? (
     <p>Loading all articles...</p>
