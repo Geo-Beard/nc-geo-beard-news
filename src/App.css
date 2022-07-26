@@ -13,3 +13,10 @@
 .topics-list {
   list-style: none;
 }
+
+.article-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}

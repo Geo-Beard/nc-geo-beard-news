@@ -20,3 +20,9 @@ export const fetchAllTopics = () => {
     return data.topics;
   });
 };
+
+export const fetchArticle = (article_id) => {
+  return newsApi.get(`/articles/${article_id}`).then(({ data }) => {
+    return data.article;
+  });
+};

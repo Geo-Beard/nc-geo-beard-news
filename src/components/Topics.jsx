@@ -26,7 +26,7 @@ export default function Topics() {
         return (
           <div key={topic.slug}>
             <li>
-              <Link to={`/topics/${topic.slug}`}>{topic.slug}</Link>
+              <Link to={`/articles/${topic.slug}`}>{topic.slug}</Link>
             </li>
           </div>
         );
