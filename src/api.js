@@ -26,3 +26,11 @@ export const fetchArticle = (article_id) => {
     return data.article;
   });
 };
+
+export const updateArticleVotes = (article_id, inc_votes) => {
+  return newsApi
+    .patch(`/articles/${article_id}`, { inc_votes: inc_votes })
+    .then(({ data }) => {
+      return data.article;
+    });
+};

@@ -7,7 +7,6 @@ import Header from "./components/Header";
 import Navigator from "./components/Navigator";
 import Home from "./components/Home";
 import Articles from "./components/Articles";
-import Topics from "./components/Topics";
 import ArticleCard from "./components/ArticleCard";
 
 //Routing
@@ -31,7 +30,6 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/articles" element={<Articles />} />
-            <Route path="/topics" element={<Topics />} />
             <Route path="/articles/:topic" element={<Articles />} />
             <Route path="/article/:article_id" element={<ArticleCard />} />
           </Routes>

@@ -1,7 +1,6 @@
 import * as api from "../api";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import Topics from "./Topics";
 
 export default function Articles() {
   const { topic } = useParams();
@@ -25,16 +24,19 @@ export default function Articles() {
     <p>Loading all articles...</p>
   ) : (
     <div>
-      <Topics />
       <ul className="articles-list">
         {allArticles.map((article) => {
           return (
-            <div key={article.article_id}>
+            <div key={article.article_id} className="article-list-card">
               <li>
                 <Link to={`/article/${article.article_id}`}>
                   {article.title}
                 </Link>
               </li>
+              <div className="article-votes-comments">
+                <p>Comments: {article.comment_count}</p>
+                <p>Votes: {article.votes}</p>
+              </div>
             </div>
           );
         })}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import * as api from "../api";
+import ArticleVotes from "./ArticleVotes";
 
 export default function ArticleCard() {
   const [articleCard, setArticleCard] = useState({});
@@ -25,11 +26,13 @@ export default function ArticleCard() {
     <div className="article-card">
       <h3>{articleCard.title}</h3>
       <p>{articleCard.body}</p>
-      <p>Comments: {articleCard.comment_count}</p>
-      <p> Votes: {articleCard.votes}</p>
-      <p>Topic: {articleCard.topic} </p>
-      <p>Author: {articleCard.author}</p>
-      <p>Posted: {articleCard.created_at}</p>
+      <div className="article-card-meta">
+        <p>Comments: {articleCard.comment_count}</p>
+        <ArticleVotes articleCard={articleCard} />
+        <p>Topic: {articleCard.topic} </p>
+        <p>Author: {articleCard.author}</p>
+        <p>Posted: {articleCard.created_at}</p>
+      </div>
     </div>
   );
 }
