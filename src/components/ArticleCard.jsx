@@ -3,10 +3,12 @@ import { useParams } from "react-router-dom";
 import * as api from "../api";
 import ArticleComments from "./ArticleComments";
 import ArticleVotes from "./ArticleVotes";
+import Comment from "./Comment"
 
 export default function ArticleCard() {
   const [articleCard, setArticleCard] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [comments, setComments] = useState([]);
 
   const { article_id } = useParams();
 
@@ -35,7 +37,8 @@ export default function ArticleCard() {
         <p>Posted: {articleCard.created_at}</p>
       </div>
       <h4>Comments section:</h4>
-      <ArticleComments />
+      <ArticleComments comments={comments} setComments={setComments} />
+      <Comment setComments={setComments} />
     </div>
   );
 }

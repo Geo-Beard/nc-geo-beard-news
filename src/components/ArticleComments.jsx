@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import * as api from "../api";
 
-export default function ArticleComments() {
-  const [comments, setComments] = useState([]);
+export default function ArticleComments({ comments, setComments }) {
   const [isLoading, setIsLoading] = useState(true);
   const { article_id } = useParams();
 
@@ -16,7 +15,7 @@ export default function ArticleComments() {
       .then(() => {
         setIsLoading(false);
       });
-  }, [article_id]);
+  }, [article_id, setComments]);
 
   return isLoading ? (
     <p>Loading comments...</p>
