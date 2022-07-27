@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import * as api from "../api";
+import moment from "moment";
 
 export default function ArticleComments({ comments, setComments }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,18 +25,18 @@ export default function ArticleComments({ comments, setComments }) {
       <ul className="comments-list">
         {comments.map((comment) => {
           return (
-            <div key={comment.comment_id} className="comment-list-card">
-              <li>
-                <div className="comment">
-                  <p>{comment.body}</p>
-                  <div className="comment-meta">
-                    <p>Author: {comment.author}</p>
-                    <p>Posted: {comment.created_at}</p>
-                    <p>Votes: {comment.votes}</p>
-                  </div>
+            <li key={comment.comment_id} className="comment-list-card">
+              <div className="comment">
+                <p>{comment.body}</p>
+                <div className="comment-meta">
+                  <p>Author: {comment.author}</p>
+                  <p>
+                    Posted: {moment(comment.created_at).format(`DD/MM/YY [at] HH:mm`)}
+                  </p>
+                  <p>Votes: {comment.votes}</p>
                 </div>
-              </li>
-            </div>
+              </div>
+            </li>
           );
         })}
       </ul>
