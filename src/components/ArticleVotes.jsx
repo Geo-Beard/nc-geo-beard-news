@@ -3,12 +3,14 @@ import * as api from "../api";
 
 export default function ArticleVotes({ articleCard }) {
   const [upvoted, setUpvoted] = useState(false);
+  const [resetUpvote, setResetUpvote] = useState(null);
   const [downvoted, setDownvoted] = useState(false);
+  const [resetDownvote, setResetDownvote] = useState(false);
   const [votes, setVotes] = useState(0);
   const [error, setError] = useState(null);
-  //   const [articleVotes, setArticleVotes] = useState(articleCard.votes);
 
-  function increaseVote(event) {
+  //UPVOTE BUTTON
+  function increaseUpvote(event) {
     setError(null);
     event.preventDefault();
     setVotes((currentVotes) => {
@@ -18,10 +20,24 @@ export default function ArticleVotes({ articleCard }) {
       setError(error);
     });
     setUpvoted(true);
-    setDownvoted(false);
+    setResetUpvote(true);
   }
 
-  function decreaseVote(event) {
+  function decreaseUpvote(event) {
+    setError(null);
+    event.preventDefault();
+    setVotes((currentVotes) => {
+      return currentVotes - 1;
+    });
+    api.updateArticleVotes(articleCard.article_id, -1).catch((error) => {
+      setError(error);
+    });
+    setUpvoted(false);
+    setResetUpvote(null);
+  }
+
+  //DOWNVOTE BUTTON
+  function increaseDownvote(event) {
     setError(null);
     event.preventDefault();
     setVotes((currentVotes) => {
@@ -31,31 +47,36 @@ export default function ArticleVotes({ articleCard }) {
       setError(error);
     });
     setDownvoted(true);
-    setUpvoted(false);
+    setResetDownvote(true);
   }
 
-  //   function resetVote(event) {
-  //     setError(null);
-  //     event.preventDefault();
-  //     setVotes((currentVotes) => {
-  //       return currentVotes + articleVotes;
-  //     });
-  //     api.updateArticleVotes(articleCard.article_id, 0).catch((error) => {
-  //       setError(error);
-  //     });
-  //     setDownvoted(false);
-  //     setUpvoted(false);
-  //   }
+  function decreaseDownvote(event) {
+    setError(null);
+    event.preventDefault();
+    setVotes((currentVotes) => {
+      return currentVotes + 1;
+    });
+    api.updateArticleVotes(articleCard.article_id, 1).catch((error) => {
+      setError(error);
+    });
+    setDownvoted(false);
+    setResetDownvote(null);
+  }
 
   return (
     <div>
       <p>Votes: {articleCard.votes + votes}</p>
       <div className="article-vote-button">
-        <button disabled={downvoted} onClick={decreaseVote}>
+        <button
+          disabled={resetUpvote}
+          onClick={downvoted ? decreaseDownvote : increaseDownvote}
+        >
           {"\u2193"}
         </button>
-        {/* <button onClick={resetVote}>Reset</button> */}
-        <button disabled={upvoted} onClick={increaseVote}>
+        <button
+          disabled={resetDownvote}
+          onClick={upvoted ? decreaseUpvote : increaseUpvote}
+        >
           {"\u2191"}
         </button>
       </div>
