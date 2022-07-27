@@ -34,3 +34,10 @@ export const updateArticleVotes = (article_id, inc_votes) => {
       return data.article;
     });
 };
+
+export const fetchComments = (article_id) => {
+  return newsApi.get(`/articles/${article_id}/comments`).then(({ data }) => {
+    console.log(data);
+    return data.comments;
+  });
+};

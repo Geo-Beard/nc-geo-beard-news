@@ -62,3 +62,30 @@
   flex-direction: column;
   background-color: antiquewhite;
 }
+
+.comments-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.comments-list {
+  list-style: none;
+  padding-inline-start: 0rem;
+}
+
+.comment-list-card {
+  border-top-style: solid;
+  border-width: 0.25rem;
+  padding-bottom: 2rem;
+}
+
+.comment {
+  background-color: antiquewhite;
+}
+
+.comment-meta {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+}

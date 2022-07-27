@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import * as api from "../api";
+import ArticleComments from "./ArticleComments";
 import ArticleVotes from "./ArticleVotes";
 
 export default function ArticleCard() {
@@ -33,6 +34,8 @@ export default function ArticleCard() {
         <p>Author: {articleCard.author}</p>
         <p>Posted: {articleCard.created_at}</p>
       </div>
+      <h4>Comments section:</h4>
+      <ArticleComments />
     </div>
   );
 }
