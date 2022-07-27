@@ -7,7 +7,7 @@ export default function Comment({ setComments }) {
     username: "",
     body: "",
   });
-
+  const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
   const { article_id } = useParams();
 
@@ -19,13 +19,19 @@ export default function Comment({ setComments }) {
 
   function handleSubmit(event) {
     setError(null);
+    setSuccess(false);
     event.preventDefault();
-    api.addNewComment(article_id, commentToAdd).catch((error) => {
-      setError(error);
-    });
-    setComments((currentComments) => {
-      return [commentToAdd, ...currentComments];
-    });
+    api
+      .addNewComment(article_id, commentToAdd)
+      .then((comment) => {
+        setComments((currentComments) => {
+          setSuccess(true);
+          return [comment, ...currentComments];
+        });
+      })
+      .catch((error) => {
+        setError(error);
+      });
     setCommentToAdd({
       username: "",
       body: "",
@@ -36,7 +42,7 @@ export default function Comment({ setComments }) {
     <section className="post-comment">
       <h2>Post comment</h2>
       <form className="comment-form" onSubmit={handleSubmit}>
-        <legend>Enter comment:</legend>
+        <legend>Enter comment for valid user:</legend>
         <div className="comment-form-inputs">
           <div>
             <label htmlFor="username">Username: </label>
@@ -63,6 +69,7 @@ export default function Comment({ setComments }) {
         </div>
         <button type="submit">Add comment</button>
       </form>
+      {success ? <p>Comment posted successfully!</p> : <></>}
       {error ? <p>Sorry - your comment was not added.</p> : <></>}
     </section>
   );

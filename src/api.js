@@ -37,11 +37,14 @@ export const updateArticleVotes = (article_id, inc_votes) => {
 
 export const fetchComments = (article_id) => {
   return newsApi.get(`/articles/${article_id}/comments`).then(({ data }) => {
-    console.log(data);
     return data.comments;
   });
 };
 
 export const addNewComment = (article_id, comment) => {
-  return newsApi.post(`/articles/${article_id}/comments`, comment);
+  return newsApi
+    .post(`/articles/${article_id}/comments`, comment)
+    .then(({ data }) => {
+      return data.comment;
+    });
 };
