@@ -26,3 +26,25 @@ export const fetchArticle = (article_id) => {
     return data.article;
   });
 };
+
+export const updateArticleVotes = (article_id, inc_votes) => {
+  return newsApi
+    .patch(`/articles/${article_id}`, { inc_votes: inc_votes })
+    .then(({ data }) => {
+      return data.article;
+    });
+};
+
+export const fetchComments = (article_id) => {
+  return newsApi.get(`/articles/${article_id}/comments`).then(({ data }) => {
+    return data.comments;
+  });
+};
+
+export const addNewComment = (article_id, comment) => {
+  return newsApi
+    .post(`/articles/${article_id}/comments`, comment)
+    .then(({ data }) => {
+      return data.comment;
+    });
+};
