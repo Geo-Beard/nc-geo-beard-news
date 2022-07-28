@@ -5,7 +5,6 @@ const newsApi = axios.create({
 });
 
 export const fetchAllArticles = (sort_by, order, topic) => {
-  console.log(sort_by, order, topic);
   let apiSortBy = sort_by;
   let apiOrder = order;
   let apiTopic = topic;
@@ -22,18 +21,19 @@ export const fetchAllArticles = (sort_by, order, topic) => {
   if (topic === null) {
     apiTopic = "";
   }
-  console.log(apiSortBy, apiOrder, apiTopic);
 
   if (topic) {
     return newsApi
-      .get(`/articles`, { params: apiSortBy, apiOrder, apiTopic })
+      .get(`/articles?sort_by=${apiSortBy}&order=${apiOrder}&topic=${apiTopic}`)
       .then(({ data }) => {
+        console.log(data.articles);
         return data.articles;
       });
   }
   return newsApi
-    .get("/articles", { params: sort_by, order })
+    .get(`/articles?sort_by=${apiSortBy}&order=${apiOrder}`)
     .then(({ data }) => {
+      console.log(data.articles);
       return data.articles;
     });
 };
