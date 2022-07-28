@@ -18,16 +18,17 @@ export default function ArticlesSortby(children) {
 
   return (
     <section className="articles-sort-by">
+      <label>Sort by: </label>
       <select
         className="sort-by"
         onChange={handleSort}
         value={searchParams.get("sort_by") ? searchParams.get("sort_by") : ""}
       >
-        <option>Sort by...</option>
         <option value="created_at">Date</option>
         <option value="comment_count">Comment count</option>
         <option value="votes">Votes</option>
       </select>
+      <label>Order: </label>
       <button
         className="order"
         onClick={() => {
