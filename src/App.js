@@ -29,7 +29,7 @@ function App() {
           <Navigator />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/articles" element={<Articles />} />
+            <Route path="/articles/*" element={<Articles />} />
             <Route path="/articles/:topic" element={<Articles />} />
             <Route path="/article/:article_id" element={<ArticleCard />} />
           </Routes>

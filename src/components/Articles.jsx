@@ -1,24 +1,28 @@
 import * as api from "../api";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
+import moment from "moment";
 
 export default function Articles() {
   const { topic } = useParams();
+  const [params] = useSearchParams();
 
   const [allArticles, setAllArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    const order = params.get("order");
+    const sort_by = params.get("sort_by");
     setIsLoading(true);
     api
-      .fetchAllArticles(topic)
+      .fetchAllArticles(sort_by, order, topic)
       .then((articles) => {
         setAllArticles(articles);
       })
       .then(() => {
         setIsLoading(false);
       });
-  }, [topic]);
+  }, [params, topic]);
 
   return isLoading ? (
     <p>Loading all articles...</p>
@@ -36,6 +40,10 @@ export default function Articles() {
               <div className="article-votes-comments">
                 <p>Comments: {article.comment_count}</p>
                 <p>Votes: {article.votes}</p>
+                <p>
+                  Date:{" "}
+                  {moment(article.created_at).format(`DD/MM/YY [at] HH:mm`)}
+                </p>
               </div>
             </div>
           );
