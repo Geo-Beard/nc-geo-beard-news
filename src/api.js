@@ -26,14 +26,12 @@ export const fetchAllArticles = (sort_by, order, topic) => {
     return newsApi
       .get(`/articles?sort_by=${apiSortBy}&order=${apiOrder}&topic=${apiTopic}`)
       .then(({ data }) => {
-        console.log(data.articles);
         return data.articles;
       });
   }
   return newsApi
     .get(`/articles?sort_by=${apiSortBy}&order=${apiOrder}`)
     .then(({ data }) => {
-      console.log(data.articles);
       return data.articles;
     });
 };
@@ -70,4 +68,8 @@ export const addNewComment = (article_id, comment) => {
     .then(({ data }) => {
       return data.comment;
     });
+};
+
+export const removeComment = (comment_id) => {
+  return newsApi.delete(`/comments/${comment_id}`);
 };

@@ -2,6 +2,7 @@ import * as api from "../api";
 import { useEffect, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import moment from "moment";
+import ArticlesSortby from "./ArticlesSortby";
 
 export default function Articles() {
   const { topic } = useParams();
@@ -28,6 +29,7 @@ export default function Articles() {
     <p>Loading all articles...</p>
   ) : (
     <div>
+      <ArticlesSortby/>
       <ul className="articles-list">
         {allArticles.map((article) => {
           return (

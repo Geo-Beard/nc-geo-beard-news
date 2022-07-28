@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import * as api from "../api";
 import moment from "moment";
+import DeleteComment from "./DeleteComment";
 
 export default function ArticleComments({ comments, setComments }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -16,7 +17,7 @@ export default function ArticleComments({ comments, setComments }) {
       .then(() => {
         setIsLoading(false);
       });
-  }, [article_id, setComments]);
+  }, [article_id, comments, setComments]);
 
   return isLoading ? (
     <p>Loading comments...</p>
@@ -31,9 +32,11 @@ export default function ArticleComments({ comments, setComments }) {
                 <div className="comment-meta">
                   <p>Author: {comment.author}</p>
                   <p>
-                    Posted: {moment(comment.created_at).format(`DD/MM/YY [at] HH:mm`)}
+                    Posted:{" "}
+                    {moment(comment.created_at).format(`DD/MM/YY [at] HH:mm`)}
                   </p>
                   <p>Votes: {comment.votes}</p>
+                  <DeleteComment comment={comment} />
                 </div>
               </div>
             </li>
