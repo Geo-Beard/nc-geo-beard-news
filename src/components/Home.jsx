@@ -14,7 +14,6 @@ export default function Home() {
       avatar_url: defaultUser,
     });
   };
-  console.log(user);
 
   return (
     <div>

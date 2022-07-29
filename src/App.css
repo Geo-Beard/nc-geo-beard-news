@@ -60,6 +60,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   list-style: none;
+  padding-inline-start: 0;
 }
 
 .article-card {
