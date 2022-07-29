@@ -2,8 +2,23 @@
   text-align: center;
 }
 
+.Home {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
+  padding-inline-start: 0;
+  padding-bottom: 2rem;
+  padding: 0.5rem;
+  border-bottom-style: solid;
+}
+
 .Home img {
-  width: 20%;
+  padding: 1rem;
+  width: 10rem;
+  height: 10rem;
+  object-fit: contain;
 }
 
 .nav-bar {
@@ -87,5 +102,31 @@
 .comment-meta {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   text-align: center;
+}
+
+.users-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+.users-list li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border-bottom-style: solid;
+  padding: 0.5rem;
+}
+
+.avatar-img {
+  float: left;
+  width: 10rem;
+  height: 10rem;
+  object-fit: contain;
 }

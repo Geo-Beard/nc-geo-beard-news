@@ -2,12 +2,11 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import * as api from "../api";
 
-export default function Comment({ setComments }) {
+export default function Comment({ setComments, success, setSuccess }) {
   const [commentToAdd, setCommentToAdd] = useState({
     username: "",
     body: "",
   });
-  const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
   const { article_id } = useParams();
 

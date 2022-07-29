@@ -10,6 +10,7 @@ export default function ArticleCard() {
   const [articleCard, setArticleCard] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [comments, setComments] = useState([]);
+  const [success, setSuccess] = useState(false);
 
   const { article_id } = useParams();
 
@@ -23,6 +24,12 @@ export default function ArticleCard() {
         setIsLoading(false);
       });
   }, [article_id]);
+
+  if (success) {
+    setTimeout(() => {
+      setSuccess(false);
+    }, 3000);
+  } //might not be necessary
 
   return isLoading ? (
     <p>Loading article...</p>
@@ -41,7 +48,11 @@ export default function ArticleCard() {
       </div>
       <h4>Comments section:</h4>
       <ArticleComments comments={comments} setComments={setComments} />
-      <Comment setComments={setComments} />
+      <Comment
+        setComments={setComments}
+        setSuccess={setSuccess}
+        success={success}
+      />
     </div>
   );
 }
