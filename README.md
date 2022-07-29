@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+# Geo-Beard News Site
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Overview
 
-## Available Scripts
+### Summary
 
-In the project directory, you can run:
+This project has been part of the Northcoders bootcamp, 16th May 2022 - 19th August 2022.
 
-### `npm start`
+The purpose of this project has been to build a full stack application which involved:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    1) building a back end API in order to be able to access application data programmatically
+    2) building a front end which utilises the back end API created earlier in the bootcamp
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The intention here was to mimic the building of a real world backend service, such as reddit.
 
-### `npm test`
+The front end application was constructed using React.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The database used was PSQL, and interactions have been carried out using node-postgres.
 
-### `npm run build`
+### Using Geo-Beard News
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+As part of the bootcamp requirements the front end application had to satisfy the following user stories:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    1) View a list of all articles
+    2) View a separate page for each topic with a list of related articles
+    3) View an individual article
+    4) Vote on an article (upvote and downvote, with a single vote)
+    5) View a list of comments associated with an article
+    6) Post a new comment to an existing article - for a valid user
+    7) Sort articles based on: date, comment count, number of votes
+    8) Order articles in ascending or descending order
+    9) Delete comments - for a valid user
+    10) Have responsive error handling for invalid URL paths
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+As the Guest user - the default user for the Home page, you can browse articles, topics, view comments. You will not be able to comment on an article without being a valid user, you can also not delete comments as the Guest user.
 
-### `npm run eject`
+To be recognised as a valid user, select one of the user options from the Home page. You will then be able to comment on articles (using that username as your input for the comment username) and also be able to delete your comments.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Links
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The following link will take you to the hosted version of this project:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+https://geo-beard-news.netlify.app/
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The following links will take you to the back end API, and back end repo:
 
-## Learn More
+https://geo-beard-news.herokuapp.com/api
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+https://github.com/Geo-Beard/geo-news-backend.git
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The following link will take you to the creators github profile:
 
-### Code Splitting
+https://github.com/Geo-Beard
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Set-up instructions
 
-### Analyzing the Bundle Size
+### Install Node.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Ensure that you have Node.js installed with these minimum requirements:
 
-### Making a Progressive Web App
+    Node.js: v18.1.0
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+To check which version you currently have installed:
 
-### Advanced Configuration
+    node --version
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Cloning the repo
 
-### Deployment
+In order to clone this repo use the following:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+    git clone https://github.com/Geo-Beard/nc-geo-beard-news
 
-### `npm run build` fails to minify
+If you would like to make changes to this repo yourself, fork the repo then clone it.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Installing dependencies
+
+To install all dependencies required run:
+
+    npm install
+
+### Running dev site locally
+
+Once you have installed all dependencies run:
+
+    npm start
