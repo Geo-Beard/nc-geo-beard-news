@@ -24,11 +24,11 @@ export default function Topics() {
     <ul className="topics-list">
       {allTopics.map((topic) => {
         return (
-          <div key={topic.slug}>
-            <li>
-              <Link to={`/articles/${topic.slug}`}>{topic.slug}</Link>
-            </li>
-          </div>
+          <li key={topic.slug}>
+            <Link to={`/articles/${topic.slug}`}>
+              {topic.slug.charAt(0).toUpperCase() + topic.slug.slice(1)}
+            </Link>
+          </li>
         );
       })}
     </ul>

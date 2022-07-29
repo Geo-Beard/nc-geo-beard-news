@@ -10,9 +10,8 @@ export default function ArticleVotes({ articleCard }) {
   const [error, setError] = useState(null);
 
   //UPVOTE BUTTON
-  function increaseUpvote(event) {
+  function increaseUpvote() {
     setError(null);
-    event.preventDefault();
     setVotes((currentVotes) => {
       return currentVotes + 1;
     });
@@ -23,9 +22,8 @@ export default function ArticleVotes({ articleCard }) {
     setResetUpvote(true);
   }
 
-  function decreaseUpvote(event) {
+  function decreaseUpvote() {
     setError(null);
-    event.preventDefault();
     setVotes((currentVotes) => {
       return currentVotes - 1;
     });
@@ -37,9 +35,8 @@ export default function ArticleVotes({ articleCard }) {
   }
 
   //DOWNVOTE BUTTON
-  function increaseDownvote(event) {
+  function increaseDownvote() {
     setError(null);
-    event.preventDefault();
     setVotes((currentVotes) => {
       return currentVotes - 1;
     });
@@ -50,9 +47,8 @@ export default function ArticleVotes({ articleCard }) {
     setResetDownvote(true);
   }
 
-  function decreaseDownvote(event) {
+  function decreaseDownvote() {
     setError(null);
-    event.preventDefault();
     setVotes((currentVotes) => {
       return currentVotes + 1;
     });

@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import * as api from "../api";
 import ArticleComments from "./ArticleComments";
 import ArticleVotes from "./ArticleVotes";
-import Comment from "./Comment"
+import Comment from "./Comment";
+import moment from "moment";
 
 export default function ArticleCard() {
   const [articleCard, setArticleCard] = useState({});
@@ -34,7 +35,9 @@ export default function ArticleCard() {
         <ArticleVotes articleCard={articleCard} />
         <p>Topic: {articleCard.topic} </p>
         <p>Author: {articleCard.author}</p>
-        <p>Posted: {articleCard.created_at}</p>
+        <p>
+          Posted: {moment(articleCard.created_at).format(`DD/MM/YY [at] HH:mm`)}
+        </p>
       </div>
       <h4>Comments section:</h4>
       <ArticleComments comments={comments} setComments={setComments} />
