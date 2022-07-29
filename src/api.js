@@ -73,3 +73,9 @@ export const addNewComment = (article_id, comment) => {
 export const removeComment = (comment_id) => {
   return newsApi.delete(`/comments/${comment_id}`);
 };
+
+export const fetchAllUsers = () => {
+  return newsApi.get("/users").then(({ data }) => {
+    return data.users;
+  });
+};
